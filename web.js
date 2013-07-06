@@ -1,14 +1,16 @@
 var express = require('express');
 
-var app = express.createServer(express.logger());
-var text;
+var buf = new Buffer(256);
 app.get('/', function(request, response) {
   var fs = require('fs');
-  fs .readFile('/index.html', function (err, data){
+  fs .readFile('./index.html', function (err, data){
   if (err) throw err;
-  text = data;
+  buf.write(data);
   }
-  response.send(text);
+
+
+var app = express.createServer(express.logger());
+  response.send(buf.toString());
 });
 
 var port = process.env.PORT || 5000;
