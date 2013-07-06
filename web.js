@@ -11,7 +11,7 @@ fs .readFile('./index.html', function (err, data){
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-  response.send(buf.toString());
+  response.send('Hello World3!');
 });
 
 var port = process.env.PORT || 5000;
