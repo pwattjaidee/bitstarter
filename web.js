@@ -1,15 +1,16 @@
 var express = require('express');
-
 var buf = new Buffer(256);
-app.get('/', function(request, response) {
-  var fs = require('fs');
-  fs .readFile('./index.html', function (err, data){
+var fs = equire('fs');
+
+fs .readFile('./index.html', function (err, data){
   if (err) throw err;
   buf.write(data);
-  }
-
+  console.log(data);
+}
 
 var app = express.createServer(express.logger());
+
+app.get('/', function(request, response) {
   response.send(buf.toString());
 });
 
